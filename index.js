@@ -52,12 +52,13 @@ function sendSendGrid(options){
                 }
 
                 // Send SendGrid template
-                sendgrid.run(html, plainText, templateName, versionName, title);
-            });
-        }
-
-        cb(null, file);
-
+				cb(sendgrid.run(html, plainText, templateName, versionName, title), file);
+            }).catch( function(e) {
+				cb(e, file);
+			});
+        } else {
+			cb(null, file);
+		}
     });
 
 }
