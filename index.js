@@ -36,7 +36,7 @@ function sendSendGrid(options){
         if (file.isBuffer()) {
             sendgrid.getTemplates()
                 .then(function() {
-                    var templateName = file.path.replace(file.cwd, '').substring(1).split('/');
+                    var templateName = file.path.replace(file.cwd, '').substring(1).split(path.sep);
                     html = file.contents;
                     $ = cheerio.load(html);
                     title = $('.title').text().trim();
